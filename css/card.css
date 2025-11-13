@@ -1,0 +1,28 @@
+.cardArea {
+    display: grid;
+    width: 80%;
+    grid-template-columns: 80% 20%;
+    margin: 1rem;
+}
+.cardArea .name {
+    display: flex;
+    align-items: center;
+    font-size: 150%;
+    
+}
+.cardArea .action {
+    display: flex;
+    justify-content: space-evenly;
+}
+.cardArea button {
+    all: unset;
+    background-color: rgb(164, 245, 146);
+    color: black;
+    border-radius: 0.2rem;
+    margin: 5px;
+    padding: 0.5rem;
+}
+.cardArea button:active {
+    opacity: 0.9;
+}
+
