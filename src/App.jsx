@@ -1,8 +1,8 @@
 import { Routes, Route } from "react-router-dom"
 import '../css/App.css'
-import DashBoard from "../pages/DashBoard"
-import Login from "../pages/Login.jsx"
-import Register from "../pages/Register.jsx"
+import DashBoard from "./DashBoard.jsx"
+import Login from "./Login.jsx"
+import Register from "./Register.jsx"
 
 
 function App() {
