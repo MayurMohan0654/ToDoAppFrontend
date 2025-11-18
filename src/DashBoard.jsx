@@ -15,7 +15,7 @@ function DashBoard() {
         const token = localStorage.getItem("token");
 
         if (!token) {
-            navigate("/login");   
+            navigate("/login");
             return;
         }
 
@@ -39,12 +39,12 @@ function DashBoard() {
     }, []);
 
     useEffect(() => {
-        console.log(tasks);
+        // console.log(tasks);
     }, [tasks]);
 
     const logout = async () => {
         localStorage.clear();
-        return location.reload();
+        navigate("/login");
     };
 
     const addItem = async () => {
@@ -54,6 +54,14 @@ function DashBoard() {
         });
         await authenticate();
     };
+
+    const handleDelete = (taskName) => {
+        setTasks(tasks.filter((k) => {
+            if(k.task != taskName){
+                return true;
+            } 
+        }));
+    }
 
     return (
         <div className="bigBox">
@@ -88,15 +96,15 @@ function DashBoard() {
                 <div className="middle">
                     <div className="displayCard">
                         {tasks.length > 0 ? (
-                            tasks.map((t, k) => (
-                                <TaskCard key={k} tname={t.task} />
-                            ))
+                            tasks.map((t, k) => {
+                                return <TaskCard key={k} tname={t.task} username={name} remove={handleDelete}/>;
+                            })
                         ) : (
                             <p>No tasks found</p>
                         )}
                     </div>
                 </div>
-                <div className="bottom">bootom of mc</div>
+                {/* <div className="bottom">bootom of mc</div> */}
             </div>
         </div>
     );

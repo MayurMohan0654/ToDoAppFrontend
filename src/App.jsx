@@ -10,10 +10,8 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<DashBoard />} />
-      <Route path="/dashboard" element={<DashBoard />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
-
     </Routes>
   )
 }

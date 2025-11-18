@@ -1,5 +1,6 @@
 import axios from "axios";
 import { Link } from "react-router-dom";
+import "../css/Register.css"
 const api = import.meta.env.VITE_SERVER_URL;
 
 function Register() {
@@ -11,8 +12,11 @@ function Register() {
         if (!password || !username || !cpassword) {
             alert("fill all field");
         } else if (password == cpassword) {
-           const { data } = await axios.post(`${api}/auth/register`, {username, password})
-          //  console.log(data);
+            const { data } = await axios.post(`${api}/auth/register`, {
+                username,
+                password,
+            });
+            //  console.log(data);
             if (data.status == 200) {
                 alert("registrations successfull");
             } else if (data.status == 409) {
@@ -26,17 +30,23 @@ function Register() {
     }
 
     return (
-        <>
-            <input type="text" id="username" placeholder="enter username" />
-            <input type="text" id="password" placeholder="enter password" />
-            <input type="text" id="cpassword" placeholder="confirm password" />
-            <button onClick={register}>Submit</button>
+        <div className="registerPage">
+            <div className="registerContainer">
+                <input type="text" id="username" placeholder="enter username" />
+                <input type="text" id="password" placeholder="enter password" />
+                <input
+                    type="text"
+                    id="cpassword"
+                    placeholder="confirm password"
+                />
 
-            <div>
-                <p>already have account? <Link to="/login">Login here</Link> </p>
-                
+                <button onClick={register}>Submit</button>
+
+                <p>
+                    already have an account? <Link to="/login">Login here</Link>
+                </p>
             </div>
-        </>
+        </div>
     );
 }
 

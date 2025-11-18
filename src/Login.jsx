@@ -1,5 +1,6 @@
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
+import "../css/Login.css";
 const api = import.meta.env.VITE_SERVER_URL;
 
 function Login() {
@@ -18,7 +19,7 @@ function Login() {
         if (data.status == 200) {
             alert("login successfull");
             localStorage.setItem("token", data.token);
-            window.location.href = "/";
+            navigate("/");
         } else if (data.status == 404) {
             alert("User not found");
         } else if (data.status == 401) {
@@ -33,12 +34,16 @@ function Login() {
     };
 
     return (
-        <>
-            <input type="text" id="username" placeholder="enter username" />
-            <input type="text" id="password" placeholder="enter password" />
-            <button onClick={login}>Submit</button>
-            <Link to="/register">Register here</Link>
-        </>
+        <div className="loginPage">
+            <div className="loginContainer">
+                <input type="text" id="username" placeholder="enter username" />
+                <input type="text" id="password" placeholder="enter password" />
+                <button onClick={login}>Submit</button>
+                <p>
+                    Didn't have account? <Link to="/register">Register here</Link>
+                </p>
+            </div>
+        </div>
     );
 }
 
